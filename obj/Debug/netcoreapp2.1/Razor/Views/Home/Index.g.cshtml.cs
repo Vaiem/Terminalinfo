@@ -58,7 +58,7 @@ using TerminalInfo.Models;
             WriteLiteral("\r\n<h2>Вход</h2>\r\n");
             EndContext();
             BeginContext(60, 34, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3ccf5b4a66364b8ca22861c64b70663d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "45202c103a254b17a725aa2046e613fa", async() => {
                 BeginContext(85, 5, true);
                 WriteLiteral("Войти");
                 EndContext();

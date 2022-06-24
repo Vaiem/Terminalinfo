@@ -59,7 +59,7 @@ using TerminalInfo.Models;
             WriteLiteral("\r\n<h2> Error попробуйте выполнить запрос снова,убедитесь что вы выбрали терминал</h2>\r\n");
             EndContext();
             BeginContext(130, 77, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "881b95458ba54c1ca0538ade83e0197f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf6721cbdbaa4ee99694b17be1b03455", async() => {
                 BeginContext(188, 15, true);
                 WriteLiteral("Попробовать еще");
                 EndContext();
