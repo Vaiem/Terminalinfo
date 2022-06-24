@@ -1,0 +1,128 @@
+﻿@model ViewUserTerminal
+@{
+    ViewData["Title"] = "Terminal";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class=".col-xs-13 .col-md-9" style="background-color:#222; border-radius: 25px;">
+            <div >
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Clients</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+            <div class="col-md-2"  style="margin-top:5px;">
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Выберите команду</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        @foreach (var item in Model.ViewCommands)
+                        {
+
+                            <a asp-action="Terminal" asp-route-id="@item.id">@item.name</a>
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" style="margin-left:10px;margin-top:5px;">
+                @if (Model.InfoParams != null)
+                {
+                    <p>Вы выбрали команду @Model.InfoParams.name</p>
+                }
+                <form asp-action="Add" method="post">
+                    <label asp-for="IdTerminal">IDТерминала</label>
+                    <input asp-for="IdTerminal" required /><br />
+                    <br />
+                    @if (Model.InfoParams != null)
+                    {
+
+
+                        @if (Model.InfoParams.parameter_name1 != null)
+                        {
+
+                            <label asp-for="command.parameter1">@Model.InfoParams.parameter_name1</label>
+                            <input asp-for="command.parameter1" />
+                        }
+                        @if (Model.InfoParams.parameter_name2 != null)
+                        {
+
+                            <label asp-for="command.parameter2">@Model.InfoParams.parameter_name2</label>
+                            <input asp-for="command.parameter2" />
+                        }
+                        @if (Model.InfoParams.parameter_name3 != null)
+                        {
+
+                            <label asp-for="command.parameter3">@Model.InfoParams.parameter_name3</label>
+                            <input asp-for="command.parameter3" />
+                        }
+                        @if (Model.InfoParams.parameter_name4 != null)
+                        {
+
+                            <label asp-for="command.parameter4">@Model.InfoParams.parameter_name4</label>
+                            <input asp-for="command.parameter4" />
+                        }
+                        <input type="hidden" asp-for="command.command_id" value="@Model.InfoParams.id" />
+                        <button type="submit" class="btn btn-danger">отправить</button>
+                    }
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+<div>
+
+    
+
+   
+
+
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>№</th>
+                    <th>Дата и время</th>
+                    <th>Команда</th>
+                    <th>параметр 1</th>
+                    <th>параметр 2</th>
+                    <th>параметр 3</th>
+                    <th>статус</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @if (Model.HistoryCommand.Count() != 0)
+                {
+
+
+                    @foreach (var items in Model.HistoryCommand)
+                    {
+
+                        <tr>
+
+                            <td>@items.Key</td>
+                            <td>@items.Value.item.time_created</td>
+                            <td>@Model.GetNameCommand(items.Value.item.command_id)</td>
+                            <td>@items.Value.item.parameter1</td>
+                            <td>@items.Value.item.parameter2</td>
+                            <td>@items.Value.item.parameter3</td>
+                            <td>@items.Value.item.state_name</td>
+                        </tr>
+
+                    }
+
+                }
+                </tbody>
+        </table>
+    
+
+
+
+
+
+</div>
+<h2>Terminal</h2>
